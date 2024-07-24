@@ -1,17 +1,19 @@
 /* src/components/Header/Header.css */
 .header {
     background-color: var(--primary-color);
-    padding: 1rem 0;
+    padding: 10px 0;
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    height: auto;
 }
 
 .header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1rem;
+    /* padding: 0.5rem 1rem; */
     /* Добавляем немного отступов */
 }
 
@@ -23,7 +25,7 @@
 }
 
 .logo img {
-    height: 60px;
+    height: 70px;
     /* Увеличиваем высоту с 40px до 60px */
     width: auto;
     /* Устанавливаем автоматическую ширину для сохранения пропорций */
