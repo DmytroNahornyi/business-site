@@ -25,6 +25,7 @@ function Contacts() {
           <form className="contact-form">
             <input type="text" placeholder={t('name')} required />
             <input type="email" placeholder={t('email')} required />
+            <input type="Number" placeholder={t('number')} required />
             <textarea placeholder={t('message')} required></textarea>
             <button type="submit">{t('send')}</button>
           </form>
