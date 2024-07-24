@@ -1,0 +1,39 @@
+/* src/components/Home/Home.css */
+.home {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  /* Закомментируйте или удалите следующую строку, если у вас нет фонового изображения */
+  /* background-image: url('/path-to-your-background-image.jpg'); */
+  background-color: #f0f0f0; /* Добавьте это вместо background-image */
+  background-size: cover;
+  background-position: center;
+  color: #333; /* Изменено с white на более темный цвет */
+  text-align: center;
+}
+
+.home h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.home p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+.cta-button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: var(--primary-color, #007bff); /* Добавлен fallback цвет */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: var(--secondary-color, #0056b3); /* Добавлен fallback цвет */
+}
