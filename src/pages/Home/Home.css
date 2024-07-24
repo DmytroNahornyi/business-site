@@ -5,7 +5,7 @@
   align-items: center;
   /* Закомментируйте или удалите следующую строку, если у вас нет фонового изображения */
   /* background-image: url('/path-to-your-background-image.jpg'); */
-  background-color: #f0f0f0; /* Добавьте это вместо background-image */
+  background-color: #daf4f5; /* Добавьте это вместо background-image */
   background-size: cover;
   background-position: center;
   color: #333; /* Изменено с white на более темный цвет */

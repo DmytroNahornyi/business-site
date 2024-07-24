@@ -27,7 +27,7 @@ function Header() {
             Услуги
           </Link>
           <Link to="portfolio" smooth={true} duration={500}>
-            Портфолио
+            Отзывы клиентов
           </Link>
           <Link to="contacts" smooth={true} duration={500}>
             Контакты

@@ -47,6 +47,36 @@ h4,
 h5,
 h6 {
   color: var(--primary-color);
+    text-align: center;
+}
+
+ul,
+ol,
+dl,
+p {
+  font-size: 1.5rem;
+  text-align: justify;
+}
+
+li {
+  line-height: 1.5;
+  margin: 10px 0;
+  font-size: 1.5rem;
+  text-align: justify;
+  /* list-style-image: none; */
+}
+
+dd,
+dt {
+  line-height: 1.5;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: 1.5rem;
 }
 
 a {
