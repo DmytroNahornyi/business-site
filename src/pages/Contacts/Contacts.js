@@ -1,12 +1,79 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import emailjs from 'emailjs-com';
 import './Contacts.css';
 
 function Contacts() {
   const { t } = useTranslation();
+  const contactsRef = useRef(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === '#contacts' && contactsRef.current) {
+      const headerHeight = document.querySelector('header').offsetHeight;
+      window.scrollTo(0, contactsRef.current.offsetTop - headerHeight);
+    }
+  }, []);
+
+  const handleChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
+
+    emailjs
+      .send(
+        'service_70f9gom',
+        'template_svec73k',
+        formData,
+        'NpimVglHhVTQss36l'
+      )
+      .then(
+        result => {
+          console.log('Успешно отправлено:', result.text);
+          setIsSent(true);
+          setIsLoading(false);
+          setTimeout(() => {
+            setIsModalOpen(false);
+            setIsSent(false);
+            setFormData({ name: '', email: '', phone: '', message: '' });
+          }, 3000);
+        },
+        error => {
+          console.error('Ошибка при отправке:', error);
+          setError(t('messageSentError'));
+          setIsLoading(false);
+        }
+      );
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setIsSent(false);
+    setError(null);
+    setFormData({ name: '', email: '', phone: '', message: '' });
+  };
 
   return (
-    <section id="contacts" className="contacts section">
+    <section id="contacts" className="contacts section" ref={contactsRef}>
       <div className="container">
         <h2>{t('contacts')}</h2>
         <div className="contact-content">
@@ -22,15 +89,66 @@ function Contacts() {
               {t('email')}: {t('emailValue')}
             </p>
           </div>
-          <form className="contact-form">
-            <input type="text" placeholder={t('name')} required />
-            <input type="email" placeholder={t('email')} required />
-            <input type="Number" placeholder={t('number')} required />
-            <textarea placeholder={t('message')} required></textarea>
-            <button type="submit">{t('send')}</button>
-          </form>
+          <button onClick={openModal} className="open-form-button">
+            {t('openContactForm')}
+          </button>
         </div>
       </div>
+
+      {isModalOpen && (
+        <div className="modal">
+          <div className="modal-content">
+            <button onClick={closeModal} className="close-button">
+              &times;
+            </button>
+            {isSent ? (
+              <div className="consultation-form success-message">
+                <h2>{t('messageSentSuccess')}</h2>
+                <p>{t('thankYouMessage')}</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="consultation-form">
+                <h2>{t('contactFormTitle')}</h2>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder={t('name')}
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder={t('email')}
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder={t('phone')}
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
+                <textarea
+                  name="message"
+                  placeholder={t('message')}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
+                {error && <p className="error-message">{error}</p>}
+                <button type="submit" disabled={isLoading}>
+                  {isLoading ? t('sending') : t('send')}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

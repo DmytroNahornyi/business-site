@@ -5,7 +5,7 @@ import { Link } from 'react-scroll';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import Menu from '../Menu';
 import './Header.css';
-import logo from '../../assets/logo.jpg'; // Предполагается, что у вас есть файл логотипа
+import logo from '../../assets/logo.jpg';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,13 +33,15 @@ function Header() {
             Контакты
           </Link>
         </nav>
-        <LanguageSwitcher />
-        <button
-          className="menu-toggle"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          ☰
-        </button>
+        <div className="header-right">
+          <LanguageSwitcher className="desktop-lang-switcher" />
+          <button
+            className="menu-toggle"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            ☰
+          </button>
+        </div>
         <Menu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
       </div>
     </header>

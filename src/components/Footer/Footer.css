@@ -1,7 +1,100 @@
-/* src/components/Footer/Footer.css */
 .footer {
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 20px 0;
-    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0 20px;
 }
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-copyright {
+    text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        width: 100%;
+}
+
+.footer-section {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.footer-section:last-child {
+    margin-right: 0;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.footer-section p,
+.footer-section li {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.footer-links,
+.social-links {
+    list-style-type: none;
+    padding: 0;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-links li a {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links li a:hover {
+    color: #ddd;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: #1877f2;
+    /* Синий цвет Facebook */
+}
+
+.instagram-icon {
+    color: #c32aa3;
+    /* Цвет Instagram */
+}
+
+.facebook-icon::before {
+    content: '\f09a';
+    font-family: 'FontAwesome';
+}
+
+.instagram-icon::before {
+    content: '\f16d';
+    font-family: 'FontAwesome';
+}
+
+.instagram-icon {
+    color: #c32aa3;
+    /* Цвет Instagram */
+}
+

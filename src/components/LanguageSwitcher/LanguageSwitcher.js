@@ -1,9 +1,10 @@
 // src/components/LanguageSwitcher.js
+
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './LanguageSwitcher.css';
 
-function LanguageSwitcher() {
+function LanguageSwitcher({ className }) {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -13,7 +14,7 @@ function LanguageSwitcher() {
   };
 
   return (
-    <div className="language-switcher">
+    <div className={`language-switcher ${className}`}>
       <button onClick={() => setIsOpen(!isOpen)}>
         {i18n.language.toUpperCase()}
       </button>

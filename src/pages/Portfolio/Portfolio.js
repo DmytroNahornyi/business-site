@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import './Portfolio.css';
 
 function Portfolio() {
   const { t } = useTranslation();
+  const portfolioRef = useRef(null);
+
+   useEffect(() => {
+     const hash = window.location.hash;
+     if (hash === '#portfolio' && portfolioRef.current) {
+       const headerHeight = document.querySelector('header').offsetHeight;
+       window.scrollTo(0, portfolioRef.current.offsetTop - headerHeight);
+     }
+   }, []);
 
   const projects = [
     { title: 'project1Title', description: 'project1Description' },

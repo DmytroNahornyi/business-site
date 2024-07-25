@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './utils/i18n';
+import { Element } from 'react-scroll';
+
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Home from './pages/Home/Home';
@@ -19,11 +21,21 @@ function App() {
         <div className="App">
           <Header />
           <main className="container">
-            <Home />
-            <About />
-            <Services />
-            <Portfolio />
-            <Contacts />
+            <Element name="home">
+              <Home />
+            </Element>
+            <Element name="about">
+              <About />
+            </Element>
+            <Element name="services">
+              <Services />
+            </Element>
+            <Element name="portfolio">
+              <Portfolio />
+            </Element>
+            <Element name="contacts">
+              <Contacts />
+            </Element>
           </main>
           <Footer />
         </div>
