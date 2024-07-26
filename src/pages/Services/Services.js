@@ -49,34 +49,41 @@ function Services() {
   };
 
   return (
-    <section id="services" className="section" ref={servicesRef}>
-      <div className="container">
-        <h2>{t('services')}</h2>
-        <h3>{t('service1Question')}</h3>
-        <div className="services-grid">
-          {services.map(service => (
-            <div key={service.id} className="service-item">
-              <div className="service-icon">{service.icon}</div>
-              <h3>{t(service.title)}</h3>
-              <p>{t(service.description)}</p>
-              <button onClick={() => handleConsultation(service)}>
-                {t('Подать заявку')}
-              </button>
-            </div>
-          ))}
+    <>
+      <section id="services" className="section" ref={servicesRef}>
+        <div className="container">
+          <h2>{t('services')}</h2>
+          <h3>{t('service1Question')}</h3>
+          <div className="services-grid">
+            {services.map(service => (
+              <div key={service.id} className="service-item">
+                <div className="service-icon">{service.icon}</div>
+                <h3>{t(service.title)}</h3>
+                <p>{t(service.description)}</p>
+                <button onClick={() => handleConsultation(service)}>
+                  {t('Подать заявку')}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      {isModalOpen && (
-        <div className={`modal service-${selectedService.id}`}>
-          <div className="modal-content">
-            <button className="close-button" onClick={closeModal}>
-              &times;
-            </button>
-            <ContactForm service={selectedService.title} onClose={closeModal} />
+      </section>
+      {isModalOpen && selectedService && (
+        <div className="modal-overlay">
+          <div className={`modal service-${selectedService.id}`}>
+            <div className="modal-content">
+              <button className="close-button" onClick={closeModal}>
+                &times;
+              </button>
+              <ContactForm
+                service={t(selectedService.title)}
+                onClose={closeModal}
+              />
+            </div>
           </div>
         </div>
       )}
-    </section>
+    </>
   );
 }
 
