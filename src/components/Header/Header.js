@@ -1,6 +1,5 @@
 // src/components/Header/Header.js
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import Menu from '../Menu';
@@ -9,11 +8,16 @@ import logo from '../../assets/logo.jpg';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   return (
     <header className="header">
       <div className="container">
-        <div className="logo">
+        <div className={`logo ${isLoaded ? 'loaded' : ''}`}>
           <img src={logo} alt="Logo" />
         </div>
         <nav className="desktop-nav">

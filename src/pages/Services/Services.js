@@ -49,7 +49,7 @@ function Services() {
   };
 
   return (
-    <section id="services" className="services section" ref={servicesRef}>
+    <section id="services" className="section" ref={servicesRef}>
       <div className="container">
         <h2>{t('services')}</h2>
         <h3>{t('service1Question')}</h3>
@@ -60,7 +60,7 @@ function Services() {
               <h3>{t(service.title)}</h3>
               <p>{t(service.description)}</p>
               <button onClick={() => handleConsultation(service)}>
-                Записаться
+                {t('Подать заявку')}
               </button>
             </div>
           ))}

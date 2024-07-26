@@ -23,7 +23,9 @@ i18n.use(initReactI18next).init({
         homeDescriptionExtended6: `
       Конфиденциальность – вы не столкнетесь с другими клиентами и посторонними людьми`,
         learnMore: 'Написать в WhatsApp',
-        whatsappUrl: 'https://wa.me/+380673049999',
+        whatsappUrlWhatsApp: 'https://wa.me/+393277847240',
+        learnMore1: 'Написать в Viber',
+        whatsappUrlViber: 'viber://chat?number=%2B+393277847240',
         about: 'О нас',
         aboutDescription:
           'IT - это команда профессионалов, специализирующихся на разработке веб-сайтов, мобильных приложений и предоставлении IT-консалтинга. Мы стремимся к инновациям и качеству в каждом проекте.',
@@ -48,13 +50,14 @@ i18n.use(initReactI18next).init({
         address: 'Адрес',
         addressValue: 'г. Рим, ул. Примерная, д. 123',
         phone: 'Телефон',
-        phoneValue: '+39 (123) 456-78-90',
+        phoneValue: '+39 327 7847240',
         email: 'Email',
-        emailValue: 'info@test.com',
+        emailValue: 'Weddingitaly28@gmail.com',
         name: 'Имя',
         message: 'Сообщение',
         number: 'Номер телефона',
         send: 'Отправить',
+        clientReviews: 'Отзывы клиентов',
         // Новые переводы
         openContactForm: 'Напишите нам',
         contactFormTitle: 'Свяжитесь с нами',

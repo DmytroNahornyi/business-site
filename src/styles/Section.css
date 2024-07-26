@@ -1,0 +1,57 @@
+.section {
+    margin-bottom: 10px;
+    border-radius: 45px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.5s ease;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    padding: 40px 20px;
+    /* Добавляем горизонтальный padding */
+    box-sizing: border-box;
+    /* Учитываем padding в общей ширине */
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Градиенты для фона секций */
+.section:nth-child(3n+1) {
+    background: linear-gradient(135deg, #fffdf5 0%, #ffddd4 100%);
+}
+
+.section:nth-child(3n+2) {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.section:nth-child(3n) {
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1024px) {
+    .section {
+        padding: 30px 15px;
+        border-radius: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 20px 10px;
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 15px 5px;
+        border-radius: 15px;
+    }
+}

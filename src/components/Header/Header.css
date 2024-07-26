@@ -1,7 +1,7 @@
 /* src/components/Header/Header.css */
 
 .header {
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, #f6d365 0%, #84fab0 100%);
     padding: 10px 0;
     position: sticky;
     top: 0;
@@ -19,12 +19,21 @@
 .logo {
     flex-shrink: 0;
     margin-right: 1rem;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 3s ease, transform 1s ease;
+}
+
+.logo.loaded {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .logo img {
     height: 70px;
     width: auto;
     max-width: 200px;
+    animation: logoAnimation 2s infinite;
 }
 
 .desktop-nav {
@@ -35,13 +44,14 @@
 .desktop-nav a {
     margin: 0 1rem;
     text-decoration: none;
-    color: white;
+    color: rgb(26, 80, 240);
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .desktop-nav a:hover {
     font-size: 110%;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 }
 
 .desktop-nav a.active {
@@ -62,6 +72,22 @@
     font-size: 1.5rem;
     cursor: pointer;
     margin-left: 1rem;
+}
+
+
+
+@keyframes logoAnimation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 @media (max-width: 1024px) {
