@@ -16,7 +16,7 @@ const Footer = () => {
                 +39 327 7847240
               </a>
             </p>
-            <p>
+            {/* <p>
               Email:{' '}
               <a
                 href="mailto:Weddingitaly28@gmail.com"
@@ -24,7 +24,7 @@ const Footer = () => {
               >
                 Weddingitaly28@gmail.com
               </a>
-            </p>
+            </p> */}
           </div>
           <div className="footer-item">
             <h3>Навигация</h3>
