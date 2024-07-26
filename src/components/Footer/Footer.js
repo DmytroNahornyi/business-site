@@ -61,7 +61,7 @@ const Footer = () => {
             <ul className="social-links">
               <li>
                 <a
-                  href="https://facebook.com"
+                  href="https://www.facebook.com/people/Irina-Doroshenko/100066278091843/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
