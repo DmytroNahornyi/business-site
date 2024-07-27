@@ -2,11 +2,14 @@
 
 import React from 'react';
 import { Link } from 'react-scroll';
+import { useTranslation } from 'react-i18next'; // Добавлен импорт useTranslation
 import LanguageSwitcher from './LanguageSwitcher/LanguageSwitcher';
 import './Menu.css';
-import closeIcon from '../assets/close-icon.svg'; // Убедитесь, что у вас есть этот файл
+import closeIcon from '../assets/close-icon.svg';
 
 function Menu({ isOpen, onClose }) {
+  const { t } = useTranslation(); // Добавлено использование хука useTranslation
+
   return (
     <div className={`menu ${isOpen ? 'open' : ''}`}>
       <button className="menu-close" onClick={onClose}>
@@ -14,19 +17,19 @@ function Menu({ isOpen, onClose }) {
       </button>
       <nav className="menu-nav">
         <Link to="home" smooth={true} duration={500} onClick={onClose}>
-          Главная
+          {t('home')}
         </Link>
         <Link to="about" smooth={true} duration={500} onClick={onClose}>
-          О нас
+          {t('about')}
         </Link>
         <Link to="services" smooth={true} duration={500} onClick={onClose}>
-          Услуги
+          {t('servicesHeader')}
         </Link>
         <Link to="portfolio" smooth={true} duration={500} onClick={onClose}>
-          Отзывы клиентов
+          {t('clientReviews')}
         </Link>
         <Link to="contacts" smooth={true} duration={500} onClick={onClose}>
-          Контакты
+          {t('contacts')}
         </Link>
       </nav>
       <LanguageSwitcher className="menu-lang-switcher" />
