@@ -53,7 +53,7 @@ function Home() {
                 className="cta-button viber-button"
                 onClick={handleViberClick}
               >
-                <FaViber /> {t('learnMore1')}
+                <FaViber /> {t('learnMoreViber')}
               </button>
             </div>
           </div>

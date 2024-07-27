@@ -14,6 +14,7 @@ i18n.use(initReactI18next).init({
         contacts: 'Контакты',
         applyNow: 'Подать заявку',
         learnMore: 'Написать в WhatsApp',
+        learnMoreViber: 'Написать в Viber',
         send: 'Отправить',
         sending: 'Отправка...',
 
@@ -149,6 +150,7 @@ i18n.use(initReactI18next).init({
         contacts: 'Contacts',
         applyNow: 'Apply Now',
         learnMore: 'Write on WhatsApp',
+        learnMoreViber: 'Write on Viber',
         send: 'Send',
         sending: 'Sending...',
 
@@ -284,6 +286,7 @@ i18n.use(initReactI18next).init({
         contacts: 'Contatti',
         applyNow: 'Invia richiesta',
         learnMore: 'Scrivi su WhatsApp',
+        learnMoreViber: 'Scrivere in Viber',
         send: 'Invia',
         sending: 'Invio in corso...',
 
