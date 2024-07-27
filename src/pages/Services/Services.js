@@ -61,7 +61,7 @@ function Services() {
                 <h3>{t(service.title)}</h3>
                 <p>{t(service.description)}</p>
                 <button onClick={() => handleConsultation(service)}>
-                  {t('Подать заявку')}
+                  {t('applyNow')}
                 </button>
               </div>
             ))}

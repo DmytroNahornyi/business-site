@@ -58,10 +58,19 @@
     padding: 0;
 }
 
-.footer-item a {
+.footer-item a,
+.footer-link {
     color: #0056b3;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.footer-item a:hover,
+.footer-link:hover {
+    color: #003d82;
+    transform: translateY(-2px);
 }
 
 .footer-item a:hover {
@@ -79,10 +88,12 @@
     gap: 10px;
 }
 
-.social-links li a {
+.social-links li a,
+.footer-link {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding: 5px 0;
 }
 
 .social-icon {
@@ -96,6 +107,13 @@
     align-items: center;
     font-size: 20px;
     color: #1054dd;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-links li a:hover .social-icon,
+.footer-link:hover .social-icon {
+    background-color: #0056b3;
+    color: #fff;
 }
 
 .instagram-icon {

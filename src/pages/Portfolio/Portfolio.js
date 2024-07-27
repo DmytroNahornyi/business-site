@@ -15,44 +15,7 @@ function Portfolio() {
     }
   }, []);
 
-  const reviews = [
-    {
-      name: 'Анна',
-      age: 28,
-      city: 'Минск',
-      text: 'Благодаря онлайн-терапии я смогла справиться со своей тревожностью. Спасибо за поддержку!',
-    },
-    {
-      name: 'Игорь',
-      age: 35,
-      city: 'Одесса',
-      text: 'Удобно и эффективно. Онлайн-формат позволил мне получить помощь, не выходя из дома.',
-    },
-    {
-      name: 'Елена',
-      age: 42,
-      city: 'Екатеринбург',
-      text: 'Профессиональный подход и внимательность к деталям. Очень довольна результатами терапии.',
-    },
-    {
-      name: 'Dmitri',
-      age: 31,
-      city: 'Milano',
-      text: 'La consulenza online mi ha aiutato a superare una crisi nella mia relazione. Grazie mille!',
-    },
-    {
-      name: 'Olga',
-      age: 39,
-      city: 'Napoli',
-      text: 'È incredibile quanto possa essere efficace la terapia anche in un formato online. Lo consiglio!',
-    },
-    {
-      name: 'Сергій',
-      age: 45,
-      city: 'Львів',
-      text: 'Вдячний за допомогу в боротьбі з вигоранням на роботі. Тепер почуваюся набагато краще.',
-    },
-  ];
+  const reviews = t('reviews', { returnObjects: true });
 
   return (
     <section id="portfolio" className="portfolio section" ref={portfolioRef}>

@@ -1,63 +1,57 @@
 import React from 'react';
 import { Link } from 'react-scroll';
-import { FaFacebook, FaInstagram } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+import { FaFacebook, FaWhatsapp, FaViber } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-grid">
           <div className="footer-item">
-            <h3>Контакты</h3>
+            <h3>{t('contacts')}</h3>
             <p>
-              Телефон:{' '}
+              {t('phone')}:{' '}
               <a href="tel:+393277847240" className="contact-link">
                 +39 327 7847240
               </a>
             </p>
-            {/* <p>
-              Email:{' '}
-              <a
-                href="mailto:Weddingitaly28@gmail.com"
-                className="contact-link"
-              >
-                Weddingitaly28@gmail.com
-              </a>
-            </p> */}
           </div>
           <div className="footer-item">
-            <h3>Навигация</h3>
+            <h3>{t('navigation')}</h3>
             <ul>
               <li>
                 <Link to="home" smooth={true} duration={500}>
-                  Главная
+                  {t('home')}
                 </Link>
               </li>
               <li>
                 <Link to="about" smooth={true} duration={500}>
-                  О нас
+                  {t('about')}
                 </Link>
               </li>
               <li>
                 <Link to="services" smooth={true} duration={500}>
-                  Услуги
+                  {t('servicesHeader')}
                 </Link>
               </li>
               <li>
                 <Link to="portfolio" smooth={true} duration={500}>
-                  Отзывы клиентов
+                  {t('clientReviews')}
                 </Link>
               </li>
               <li>
                 <Link to="contacts" smooth={true} duration={500}>
-                  Контакты
+                  {t('contacts')}
                 </Link>
               </li>
             </ul>
           </div>
           <div className="footer-item">
-            <h3>Социальные сети</h3>
+            <h3>{t('socialNetworks')}</h3>
             <ul className="social-links">
               <li>
                 <a
@@ -73,14 +67,26 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="https://instagram.com"
+                  href="https://wa.me/393277847240"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <span className="social-icon">
-                    <FaInstagram />
+                    <FaWhatsapp />
                   </span>
-                  Instagram
+                  WhatsApp
+                </a>
+              </li>
+              <li>
+                <a
+                  href="viber://chat?number=%2B393277847240"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="social-icon">
+                    <FaViber />
+                  </span>
+                  Viber
                 </a>
               </li>
             </ul>
@@ -88,7 +94,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-copyright">
-        <p>&copy; 2024 Ваша Компания. Все права защищены.</p>
+        <p>{t('allRightsReserved', { year: new Date().getFullYear() })}</p>
       </div>
     </footer>
   );

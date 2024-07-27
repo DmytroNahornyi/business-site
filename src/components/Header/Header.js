@@ -1,6 +1,7 @@
 // src/components/Header/Header.js
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
+import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 import Menu from '../Menu';
 import './Header.css';
@@ -9,6 +10,7 @@ import logo from '../../assets/logo.jpg';
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const { t } = useTranslation(); // Добавьте эту строку
 
   useEffect(() => {
     setIsLoaded(true);
@@ -22,19 +24,19 @@ function Header() {
         </div>
         <nav className="desktop-nav">
           <Link to="home" smooth={true} duration={500}>
-            Главная
+            {t('home')}
           </Link>
           <Link to="about" smooth={true} duration={500}>
-            О нас
+            {t('about')}
           </Link>
           <Link to="services" smooth={true} duration={500}>
-            Услуги
+            {t('servicesHeader')}
           </Link>
           <Link to="portfolio" smooth={true} duration={500}>
-            Отзывы клиентов
+            {t('clientReviews')}
           </Link>
           <Link to="contacts" smooth={true} duration={500}>
-            Контакты
+            {t('contacts')}
           </Link>
         </nav>
         <div className="header-right">
