@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import emailjs from 'emailjs-com';
 import './Contacts.css';
-import contactImage from '../../assets/3.jpg';
+const contactImage = require('../../assets/3.jpg');
 
 function Contacts() {
   const { t } = useTranslation();
