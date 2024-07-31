@@ -123,6 +123,11 @@
     .contacts-image {
         max-width: 100%;
     }
+
+    .image-wrapper {
+        height: 300px;
+        /* Фиксированная высота для планшетов */
+    }
 }
 
 @media (max-width: 768px) {
@@ -134,11 +139,21 @@
     .contacts-image {
         padding: 20px;
     }
+
+    .image-wrapper {
+        height: 250px;
+        /* Уменьшенная высота для мобильных устройств */
+    }
 }
 
 @media (max-width: 480px) {
     .consultation-form button {
         font-size: 0.9rem;
         padding: 10px 16px;
+    }
+
+    .image-wrapper {
+        height: 200px;
+        /* Еще меньшая высота для маленьких мобильных устройств */
     }
 }

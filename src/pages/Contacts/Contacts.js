@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import emailjs from 'emailjs-com';
 import './Contacts.css';
+
 const contactImage = require('../../assets/3.jpg');
 
 function Contacts() {
@@ -112,7 +113,7 @@ function Contacts() {
           </div>
           <div className="contacts-image">
             <div className="image-wrapper">
-              <img src={contactImage} alt="Contact" />
+              <img src={contactImage} alt="Contact" loading="lazy" />
             </div>
           </div>
         </div>
