@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import emailjs from 'emailjs-com';
 import './ContactForm.css';
 
 function ContactForm({ service, onClose }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '', // Добавлено поле для номера телефона
+    phone: '',
     message: '',
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -17,48 +16,36 @@ function ContactForm({ service, onClose }) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
-    // Подготовка данных для отправки
-    const templateParams = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone, // Добавлен номер телефона
-      message: formData.message,
-    };
-
-    console.log('Отправляемые данные:', templateParams);
-
-    emailjs
-      .send(
-        'service_70f9gom',
-        'template_svec73k',
-        templateParams,
-        'NpimVglHhVTQss36l'
-      )
-      .then(
-        result => {
-          console.log('Успешно отправлено:', result.text);
-          setIsSent(true);
-          setIsLoading(false);
-          setTimeout(() => {
-            onClose();
-          }, 3000);
+    try {
+      const response = await fetch('https://formspree.io/f/mdkngzdl', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        error => {
-          console.error('Ошибка при отправке:', error);
-          if (error.text) {
-            console.error('Текст ошибки:', error.text);
-          }
-          setError(
-            'Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте еще раз.'
-          );
-          setIsLoading(false);
-        }
+        body: JSON.stringify({ ...formData, service }),
+      });
+
+      if (response.ok) {
+        setIsSent(true);
+        setTimeout(() => {
+          onClose();
+        }, 3000);
+      } else {
+        throw new Error('Ошибка при отправке формы');
+      }
+    } catch (error) {
+      console.error('Ошибка при отправке:', error);
+      setError(
+        'Произошла ошибка при отправке сообщения. Пожалуйста, попробуйте еще раз.'
       );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   if (isSent) {
@@ -71,7 +58,12 @@ function ContactForm({ service, onClose }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="consultation-form">
+    <form
+      onSubmit={handleSubmit}
+      className="consultation-form"
+      action="https://formspree.io/f/mdkngzdl"
+      method="POST"
+    >
       <h2>Запись на консультацию</h2>
       {service && !service.includes('Title') && (
         <p className="service-name">{service}</p>

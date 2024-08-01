@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import emailjs from 'emailjs-com';
 import './Contacts.css';
 
 const contactImage = require('../../assets/3.jpg');
@@ -30,34 +29,33 @@ function Contacts() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
 
-    emailjs
-      .send(
-        'service_70f9gom',
-        'template_svec73k',
-        formData,
-        'NpimVglHhVTQss36l'
-      )
-      .then(
-        result => {
-          console.log('Успешно отправлено:', result.text);
-          setIsSent(true);
-          setIsLoading(false);
-          setTimeout(() => {
-            setIsSent(false);
-            setFormData({ name: '', email: '', phone: '', message: '' });
-          }, 3000);
+    try {
+      const response = await fetch('https://formspree.io/f/mdkngzdl', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        error => {
-          console.error('Ошибка при отправке:', error);
-          setError(t('messageSentError'));
-          setIsLoading(false);
-        }
-      );
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSent(true);
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        setTimeout(() => setIsSent(false), 3000);
+      } else {
+        throw new Error('Ошибка при отправке формы');
+      }
+    } catch (error) {
+      console.error('Ошибка при отправке:', error);
+      setError(t('messageSentError'));
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -71,7 +69,12 @@ function Contacts() {
                 <p>{t('thankYouMessage')}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="consultation-form">
+              <form
+                onSubmit={handleSubmit}
+                className="consultation-form"
+                action="https://formspree.io/f/mdkngzdl"
+                method="POST"
+              >
                 <h2>{t('contactFormTitle')}</h2>
                 <input
                   type="text"
